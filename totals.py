@@ -12,7 +12,7 @@ y2023League = 917208843661271040
 y2024League = 1048343675169927168
 
 #numWeeks = 14 #Set this value if you want through a specific week, instead of where the real world is
-numWeeks = requests.get('https://api.sleeper.app/v1/state/nfl').json()['week']
+numWeeks = requests.get('https://api.sleeper.app/v1/state/nfl').json()['display_week']
 
 values = dict()
 for a in range(1, 13):
@@ -67,4 +67,4 @@ for z in range(len(positionList)):
 header = "Total, ,All Offense, ,All Defense, , ,QB+Flex, ,RB, ,WR, ,TE, ,WRT, ,IDP, ,DL, ,LB, ,DB, "
 res = '\n'.join("{},{},{}, ,{},{},{},{},{},{},{},{},{}".format(a,b,c,d,e,f,g,h,i,j,k,l) for a,b,c,d,e,f,g,h,i,j,k,l in zip(*sortedValues))
 pyperclip.copy(header + '\n' + res)
-print('Values saved in clipboard')
+print('Values saved in clipboard for up to Week ' + str(numWeeks))
