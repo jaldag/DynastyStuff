@@ -13,6 +13,7 @@ positionList = ['Total', 'All Offense', 'All Defense']
 y2022League = 776558166568747008
 y2023League = 917208843661271040
 y2024League = 1048343675169927168
+y2025League = 1181324955627573248
 
 #numWeeks = 14 #Set this value if you want through a specific week, instead of where the real world is
 numWeeks = requests.get('https://api.sleeper.app/v1/state/nfl').json()['display_week']
@@ -26,7 +27,7 @@ def addValue(roster_id, position, value):
 
 
 for x in range(1, numWeeks + 1):
-	matchup = requests.get('https://api.sleeper.app/v1/league/1048343675169927168/matchups/' + str(x)).json()
+	matchup = requests.get('https://api.sleeper.app/v1/league/1181324955627573248/matchups/' + str(x)).json()
 	for val in matchup:
 		user = val['roster_id']
 		playerPoints = val['players_points']
@@ -56,13 +57,6 @@ for x in range(1, numWeeks + 1):
 		wrPoints = playerPoints[wrs[0]] + playerPoints[wrs[1]]
 		del wrs[1]
 		del wrs[0]
-
-		#Taysom
-		if '4381' in tes:
-			if '4381' == qbs[0]:
-				tes.remove('4381')
-			else:
-				qbs.remove('4381')
 
 		qbPoints = playerPoints[qbs[0]]
 		del qbs[0]
